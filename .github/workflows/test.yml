@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: kikyous/template-action@v0.0.2
+      - uses: kikyous/template-action@v0.0.3
         id: template
         with:
           template: "{{~it.payload.commits :commit}}[✅ {{=commit.message}}]({{=commit.url}})\n{{~}}> commiter: {{=it.payload.head_commit.author.name}}"
