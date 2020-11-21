@@ -9,7 +9,7 @@ jobs:
       - uses: kikyous/template-action@v0.0.2
         id: template
         with:
-          template: {{~it.payload.commits :commit}}[✅ {{=commit.message}}]({{=commit.url}})\n{{~}}> commiter: {{=it.payload.head_commit.author.name}}
+          template: "{{~it.payload.commits :commit}}[✅ {{=commit.message}}]({{=commit.url}})\n{{~}}> commiter: {{=it.payload.head_commit.author.name}}"
           post-run: |
             curl '${{ secrets.WECHAT_WORK_WEBHOOK_URL }}' \
             -H 'Content-Type: application/json' \
