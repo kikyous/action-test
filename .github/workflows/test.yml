@@ -9,7 +9,7 @@ jobs:
       - uses: kikyous/template-action@v0.0.3
         id: template
         with:
-          template: "{{=JSON.stringify(it)}}"
+          template: "{{=JSON.stringify(it, undefined, 2)}}"
 
       - name: Get the render output
         run: echo "${{ steps.template.outputs.content }}"
