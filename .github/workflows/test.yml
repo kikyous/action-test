@@ -6,9 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: kikyous/template-action@v0.0.1
+      - uses: kikyous/template-action@v0.0.2
         id: template
         with:
-          template: <div>{{= JSON.stringify(it.payload) }}</div>"
-      - name: Get the output time
+          template: {{~it.payload.commits :commit}}[✅ {{=commit.message}}]({{=commit.url}})\n{{~}}> commiter: {{=it.payload.head_commit.author.name}}
+          post-run: |
+            curl '${{ secrets.WECHAT_WORK_WEBHOOK_URL }}' \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "msgtype": "markdown",
+              "markdown": {
+                  "content": "{{= it.output }}"
+              }
+            }'
+
+      - name: Get the render output
         run: echo "${{ steps.template.outputs.content }}"
