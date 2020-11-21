@@ -1,0 +1,13 @@
+name: Test
+on:
+  push:
+    branches:
+      - *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: kikyous/template-action@v0.0.1
+        with:
+          template: <div>{{= JSON.stringify(it.array) }}!</div>"
