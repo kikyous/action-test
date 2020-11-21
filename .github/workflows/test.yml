@@ -9,6 +9,6 @@ jobs:
       - uses: kikyous/template-action@v0.0.1
         id: template
         with:
-          template: <div>{{= JSON.stringify(it.array) }}!</div>"
+          template: <div>{{= JSON.stringify(it.payload) }}</div>"
       - name: Get the output time
         run: echo "${{ steps.template.outputs.content }}"
