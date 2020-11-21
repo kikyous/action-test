@@ -1,13 +1,14 @@
 name: Test
 on:
-  push:
-    branches:
-      - *
+  push
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: kikyous/template-action@v0.0.1
+        id: template
         with:
           template: <div>{{= JSON.stringify(it.array) }}!</div>"
+      - name: Get the output time
+        run: echo "${{ steps.template.outputs.content }}"
