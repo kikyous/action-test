@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+<<<<<<< HEAD
       - name: Checkout
         uses: actions/checkout@v2.3.4
       
@@ -14,6 +15,13 @@ jobs:
         with:
           template-path: ".github/workflows/test.dot.md"
           post-run: echo "{{=it.output}}"
+=======
+      - uses: kikyous/template-action@v2.0.0
+        id: template-path
+        with:
+          template-path: "github/workflows/test.ejs.md"
+          post-run: echo "<%= output %>"
+>>>>>>> bc6f642... update
 
       - name: Get the render output
         run: echo "${{ steps.template-path.outputs.content }}"
@@ -21,5 +29,6 @@ jobs:
       - uses: kikyous/template-action@v1.1.2
         id: template
         with:
-          template: "{{=JSON.stringify(it.context, undefined, 2)}}"
-          post-run: echo "{{=it.output}}"
+          template: "<%= JSON.stringify(it.context, undefined, 2) %>"
+          post-run: echo "<%= output %>"
+
