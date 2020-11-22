@@ -6,13 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: kikyous/template-action@v1.1.0
+      - uses: kikyous/template-action@v1.1.1
         id: template-path
         with:
           template-path: "github/workflows/test.dot.md"
           post-run: echo "{{=it.output}}"
 
-      - uses: kikyous/template-action@v1.1.0
+      - uses: kikyous/template-action@v1.1.1
         id: template
         with:
           template: "{{=JSON.stringify(it.context, undefined, 2)}}"
