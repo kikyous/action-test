@@ -15,6 +15,9 @@ jobs:
           template-path: ".github/workflows/test.dot.md"
           post-run: echo "{{=it.output}}"
 
+      - name: Get the render output
+        run: echo "${{ steps.template-path.outputs.content }}"
+
       - uses: kikyous/template-action@v1.1.1
         id: template
         with:
