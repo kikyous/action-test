@@ -10,10 +10,10 @@ jobs:
         id: template-path
         with:
           template-path: "./github/workflows/test.dot.md"
-        post-run: echo "{{=it.output}}"
+          post-run: echo "{{=it.output}}"
 
       - uses: kikyous/template-action@v1.1.0
         id: template
         with:
           template: "{{=JSON.stringify(it.context, undefined, 2)}}"
-        post-run: echo "{{=it.output}}"
+          post-run: echo "{{=it.output}}"
