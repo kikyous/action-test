@@ -9,7 +9,7 @@ jobs:
       - uses: kikyous/template-action@v1.1.1
         id: template-path
         with:
-          template-path: "github/workflows/test.dot.md"
+          template-path: ".github/workflows/test.dot.md"
           post-run: echo "{{=it.output}}"
 
       - uses: kikyous/template-action@v1.1.1
