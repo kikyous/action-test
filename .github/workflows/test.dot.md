@@ -2,5 +2,5 @@
 [✅ {{=commit.message}}]({{=commit.url}})
 {{~}}
 > commiter: {{=it.context.payload.head_commit.author.name}}
-> test: aaa
+> email: {{=it.context.payload.head_commit.author.email}}
 > test1: chen
