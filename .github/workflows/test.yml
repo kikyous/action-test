@@ -13,7 +13,14 @@ jobs:
         id: template-path
         with:
           template-path: ".github/workflows/test.ejs.md"
-          post-run: echo "<%= output %>"
+          post-run: |
+            echo '${{ secrets.WECHAT_WORK_WEBHOOK_URL }}' \
+              -H 'Content-Type: application/json' \
+              -d '{
+                "msgtype": "markdown",
+                "markdown": { "content": "<%- output %>" }
+              }'
+
 
       - name: Get the render output
         run: echo "${{ steps.template-path.outputs.content }}"
@@ -22,5 +29,5 @@ jobs:
         id: template
         with:
           template: "<%= JSON.stringify(context, undefined, 2) %>"
-          post-run: echo "<%= output %>"
+          post-run: echo "<%- output %>"
 
