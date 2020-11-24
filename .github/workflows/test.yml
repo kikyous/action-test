@@ -14,11 +14,11 @@ jobs:
         with:
           template-path: ".github/workflows/test.ejs.md"
           post-run: |
-            echo '${{ secrets.WECHAT_WORK_WEBHOOK_URL }}' \
+            curl '${{ secrets.WECHAT_WORK_WEBHOOK_URL }}' \
               -H 'Content-Type: application/json' \
               -d '{
                 "msgtype": "markdown",
-                "markdown": { "content": "<%- output %>" }
+                "markdown": { "content": <%- JSON.stringify(output) %> }
               }'
 
 
