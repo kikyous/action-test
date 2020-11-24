@@ -28,6 +28,6 @@ jobs:
       - uses: kikyous/template-action@v2.0.0
         id: template
         with:
-          template: "<%= JSON.stringify(context, undefined, 2) %>"
+          template: "<%- JSON.stringify(context, undefined, 2) %>"
           post-run: echo "<%- output %>"
 
