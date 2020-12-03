@@ -26,6 +26,7 @@ jobs:
       - uses: kikyous/template-action@v2.0.0
         id: template1
         with:
+          inputA: asdfasdf
           template: "<%- JSON.stringify(process.env, undefined, 2) %>"
           post-run: echo "<%- output %>"
 
